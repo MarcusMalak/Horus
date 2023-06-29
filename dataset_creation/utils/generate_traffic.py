@@ -86,18 +86,14 @@ class Traffic:
                 spawn_point.location = loc
                 spawn_points.append(spawn_point)
 
-        print(f'SPAWNED POINTS: {len(spawn_points)}')
 
         actors = []
-        spawn_test = []
         # Spawn walker actors
         for i, spawn_point in enumerate(random.sample(self.spawn_points, max_pedestrians)):
             walker_bp = random.choice(bp_pedestrians)
             temp = self.world.try_spawn_actor(walker_bp, spawn_point)
             if temp is not None:
                 actors.append(temp)
-                spawn_test.append(spawn_point)
-        print(f'SPAWNED PEDESTRIANS: {len(actors)}')
 
         controllers = []
         walker_controller_bp = self.world.get_blueprint_library().find('controller.ai.walker')
@@ -105,25 +101,9 @@ class Traffic:
             temp = self.world.try_spawn_actor(walker_controller_bp, carla.Transform(), actors[i])
             controllers.append(temp)
 
-        print(f'SPAWNED CONTROLLERS: {len(controllers)}')
-
-        # print(f'num_walkers = ', len(actors))
-
         for i in range(len(actors)):
             controllers[i].start()
-
-            loc = self.world.get_random_location_from_navigation()
-            loc.x = spawn_test[i].location.x
-            loc.y = spawn_test[i].location.y
-            loc.z = spawn_test[i].location.z
-
-            print(f'location: {loc}')
-            controllers[i].go_to_location(loc)
-            # loc = self.world.get_random_location_from_navigation()
-            # print(f'control loc: {loc}')
-            # print(f'controller: {controllers[i]}')
-            # controllers[i].go_to_location(loc)
-            print(f'started controller: {i}')
+            controllers[i].go_to_location(self.world.get_random_location_from_navigation())
 
         print('\nWalkers spawned')
 
