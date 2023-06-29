@@ -13,3 +13,6 @@ Experimental results demonstrate the effectiveness of the approaches explored in
 [link to paper?]
 
 ![drone_heights](https://github.com/MarcusMalak/Horus/assets/94542107/8b8cff28-4f2a-4342-bf41-8adf0db58d46)
+
+## How to use
+There are two folders in the repository, one for the dataset creation using Carla and the other contains the YOLOv8 and TransFusion object detection methods. See README inside folders for more information.
