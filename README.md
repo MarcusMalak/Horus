@@ -16,3 +16,6 @@ Experimental results demonstrate the effectiveness of the approaches explored in
 
 ## How to use
 There are two folders in the repository, one for the dataset creation using Carla and the other contains the YOLOv8 and TransFusion object detection methods. See README inside folders for more information.
+
+## Extra information
+The TransFusion data preperation and evaluation files are modified to ensure compatibility with Horus. Keep that in mind if you clone the repository from source.
