@@ -13,3 +13,4 @@ All sensor and data export configuration can be modified in main_export.py.
 - Run get_lidar_num.py (Adds number of lidar points to annotations)
 
 ## Tips
+- Make sure to modify splits.py file the nuScenes library as the scene numbers for the train and val set are hardcoded.
